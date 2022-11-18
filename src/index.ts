@@ -9,9 +9,12 @@ const readFile = (path: string): {} | any => {
   }
 }
 
-const writeFile = (path: string, data: {} | any): void => {
+const writeFile = (filePath: string, data: {} | any): void => {
+  const { dir } = path.parse(filePath)
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir)
+
   const dataStr = JSON.stringify(data, null, '\t')
-  fs.writeFileSync(path, dataStr)
+  fs.writeFileSync(filePath, dataStr)
 }
 
 const writeAlias = (alias: {} | any): void => {
