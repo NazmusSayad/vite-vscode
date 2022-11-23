@@ -1,6 +1,17 @@
 import fs from 'fs'
 import path from 'path'
 
+const deepEqual = (x: any, y: any): boolean => {
+  const ok = Object.keys
+  const tx = typeof x
+  const ty = typeof y
+
+  return x && y && tx === 'object' && tx === ty
+    ? ok(x).length === ok(y).length &&
+        ok(x).every((key) => deepEqual(x[key], y[key]))
+    : x === y
+}
+
 const readFile = (path: string): {} | any => {
   try {
     return JSON.parse(fs.readFileSync(path, 'utf-8'))
@@ -24,27 +35,37 @@ const writeAlias = (alias: {} | any): void => {
   const settings = readFile(settingsPath)
   const jsConf = readFile(jsConfPath)
 
-  settings['path-autocomplete.pathMappings'] ??= {}
-  settings['path-intellisense.pathMappings'] ??= {}
-  jsConf.compilerOptions ??= {}
-  jsConf.compilerOptions.module ??= 'es6'
-  jsConf.compilerOptions.baseUrl ??= './'
-  jsConf.compilerOptions.paths ??= {}
+  const newSettings = { ...settings }
+  const newJsConf = { ...jsConf }
+
+  newSettings['path-autocomplete.pathMappings'] ??= {}
+  newSettings['path-intellisense.pathMappings'] ??= {}
+  newJsConf.compilerOptions ??= {}
+  newJsConf.compilerOptions.module ??= 'es6'
+  newJsConf.compilerOptions.baseUrl ??= './'
+  newJsConf.compilerOptions.paths ??= {}
 
   for (let key in alias) {
     const relativePath = path.relative(cwd, alias[key])
 
-    settings['path-autocomplete.pathMappings'][key] =
+    newSettings['path-autocomplete.pathMappings'][key] =
       '${folder}/' + relativePath
 
-    settings['path-intellisense.pathMappings'][key] =
+    newSettings['path-intellisense.pathMappings'][key] =
       '${workspaceFolder}/' + relativePath
 
-    jsConf.compilerOptions.paths[key + '/*'] = ['./' + relativePath + '/*']
+    newJsConf.compilerOptions.paths[key + '/*'] = ['./' + relativePath + '/*']
   }
 
-  writeFile(settingsPath, settings)
-  writeFile(jsConfPath, jsConf)
+  if (!deepEqual(settings, newSettings)) {
+    writeFile(settingsPath, newSettings)
+    console.log('VSCode path settings updated...')
+  }
+
+  if (!deepEqual(jsConf, newJsConf)) {
+    writeFile(jsConfPath, newJsConf)
+    console.log('JSConfig path options updated...')
+  }
 }
 
 export default () => {
