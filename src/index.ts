@@ -12,6 +12,10 @@ const deepEqual = (x: any, y: any): boolean => {
     : x === y
 }
 
+const deepClone = (obj: any): any => {
+  return JSON.parse(JSON.stringify(obj))
+}
+
 const readFile = (path: string): {} | any => {
   try {
     return JSON.parse(fs.readFileSync(path, 'utf-8'))
@@ -35,8 +39,8 @@ const writeAlias = (alias: {} | any): void => {
   const settings = readFile(settingsPath)
   const jsConf = readFile(jsConfPath)
 
-  const newSettings = { ...settings }
-  const newJsConf = { ...jsConf }
+  const newSettings = deepClone(settings)
+  const newJsConf = deepClone(jsConf)
 
   newSettings['path-autocomplete.pathMappings'] ??= {}
   newSettings['path-intellisense.pathMappings'] ??= {}
