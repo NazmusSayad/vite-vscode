@@ -1,6 +1,6 @@
 {
   "name": "vite-vscode",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This automatically creates some vscode config from vite config",
   "main": "./dist-mjs/index.js",
   "scripts": {

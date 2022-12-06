@@ -48,7 +48,7 @@ const writeAlias = (alias: {} | any): void => {
   newJsConf.compilerOptions.paths ??= {}
 
   for (let key in alias) {
-    const relativePath = path.relative(cwd, alias[key])
+    const relativePath = path.relative(cwd, alias[key]).replace(/\\/gim, '/')
 
     newSettings['path-autocomplete.pathMappings'][key] =
       '${folder}/' + relativePath
