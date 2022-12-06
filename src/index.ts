@@ -45,8 +45,6 @@ const writeAlias = (alias: {} | any): void => {
   newSettings['path-autocomplete.pathMappings'] ??= {}
   newSettings['path-intellisense.pathMappings'] ??= {}
   newJsConf.compilerOptions ??= {}
-  newJsConf.compilerOptions.module ??= 'es6'
-  newJsConf.compilerOptions.baseUrl ??= './'
   newJsConf.compilerOptions.paths ??= {}
 
   for (let key in alias) {
