@@ -15,3 +15,5 @@ export default ({ jsconfig = true } = {}) => {
     },
   }
 }
+
+export { default as createAlias } from './createAlias.js'
