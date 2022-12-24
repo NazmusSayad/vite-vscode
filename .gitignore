@@ -1,4 +1,3 @@
-
 # Added by npm-ez
 dist-cjs
 dist-mjs
@@ -132,3 +131,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Added by npm-ez
+node_modules
+dist-cjs
+dist-mjs

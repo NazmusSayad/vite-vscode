@@ -2,10 +2,15 @@
 # yarn lockfile v1
 
 
-"@types/node@^18.11.9":
-  version "18.11.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.9.tgz#02d013de7058cea16d36168ef2fc653464cfbad4"
-  integrity sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==
+"@types/node@^18.11.17":
+  version "18.11.17"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.17.tgz#5c009e1d9c38f4a2a9d45c0b0c493fe6cdb4bcb5"
+  integrity sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==
+
+ansi-colors@^4.1.3:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.3.tgz#37611340eb2243e70cc604cad35d63270d48781b"
+  integrity sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -91,11 +96,12 @@ node-ls-files@^0.0.3:
   resolved "https://registry.yarnpkg.com/node-ls-files/-/node-ls-files-0.0.3.tgz#37e1158892521fadfb9cfa7570fb2976d5c9fece"
   integrity sha512-OhZBvqbaSdZmAWAHX5xPHWrGep2Q0XDy6Kt3DY0LSWwEoiImWT41zW1oXwlIbQvJHrb3qO3itZRK0zhogLKPqA==
 
-npm-ez@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/npm-ez/-/npm-ez-0.0.12.tgz#c59c2f5dd4c3f7f299cdecd0756a2d46ce2fda02"
-  integrity sha512-he5FETuBCqayESy2NJkiQ5xpexkr8PZKbxiNo5iPstkOT5j7Og5IJzbf9avqbj/PkLpoCi+OIXwcrq8Nee/QVg==
+npm-ez@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/npm-ez/-/npm-ez-1.0.3.tgz#b2c2e48b8965bd0e080235313efa62db53df2d4c"
+  integrity sha512-sapEaUxZ3TPk/IQ/MoqQpVIJnf9KOcyS7kjyFFgqTlYzOHGhdI+ywEMwv6tnjEy1RpkL1PcdhMCdOqrTmyeilg==
   dependencies:
+    ansi-colors "^4.1.3"
     node-ls-files "^0.0.3"
     shelljs "^0.8.5"
 
