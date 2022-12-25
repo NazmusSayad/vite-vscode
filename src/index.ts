@@ -2,7 +2,7 @@ import { ConfigTypes } from './types.js'
 import writeTSJSConfig from './writeTSJSConfig.js'
 import writeVSCode from './writeVSCode.js'
 
-export default ({ jsconfig = true } = {}) => {
+export default () => {
   return {
     name: 'Vite VSCode',
 
@@ -11,7 +11,7 @@ export default ({ jsconfig = true } = {}) => {
       if (!alias || alias.toString() !== '[object Object]') return
 
       writeVSCode(alias)
-      writeTSJSConfig(alias, jsconfig)
+      writeTSJSConfig(alias)
     },
   }
 }

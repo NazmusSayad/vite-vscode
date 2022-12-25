@@ -28,12 +28,15 @@ const writeConfig = (label: string, path: string, config: ConfigTypes) => {
 
   const wrote = writeJSON(fileData, path)
   wrote && console.log(label + ' config updated...')
+  return fileData
 }
 
-export default (config: ConfigTypes, writeJsConfig: boolean) => {
-  writeJsConfig && writeConfig('JSConfig', jsConfigPath, config)
-
+export default (config: ConfigTypes) => {
   if (fs.existsSync(tsConfigPath)) {
-    writeConfig('TSConfig', tsConfigPath, config)
+    const data = writeConfig('TSConfig', tsConfigPath, config)
+
+    if (data.compilerOptions?.allowJs) return
   }
+
+  writeConfig('JSConfig', jsConfigPath, config)
 }
