@@ -16,4 +16,4 @@ export default () => {
   }
 }
 
-export { default as createAlias } from './createAlias.js'
+export * as config from './betterConfig.js'

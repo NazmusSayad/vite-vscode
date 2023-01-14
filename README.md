@@ -56,9 +56,9 @@ export default defineConfig({ plugins /* Whatever.... */ })
 ## Advanced usages :
 
 ```js
-import viteVSCode, { createAlias } from 'vite-vscode'
+import viteVSCode, { config } from 'vite-vscode'
 
-const resolve = { alias: createAlias('$', './src') }
+const resolve = { alias: config.aliases('$', './src') }
 const plugins = [/* Other plugins... */ viteVSCode()]
 
 // createAlias takes a prefix and target dir
